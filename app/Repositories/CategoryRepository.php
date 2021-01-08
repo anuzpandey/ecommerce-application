@@ -35,22 +35,6 @@ class CategoryRepository extends BaseRepository implements CategoryContract
     }
 
     /**
-     * Finding the model by id using findOneOrFail() method from BaseRepo.
-     * If no model returned from the query, we throw ModelNotFoundException.
-     * @param int $id
-     * @return mixed
-     * @throws ModelNotFoundException
-     */
-    public function findCategoryById(int $id)
-    {
-        try {
-            return $this->findOneOrFail($id);
-        } catch (ModelNotFoundException $e) {
-            throw new ModelNotFoundException($e);
-        }
-    }
-
-    /**
      * @param array $params
      * @return Category
      */
@@ -99,6 +83,8 @@ class CategoryRepository extends BaseRepository implements CategoryContract
                 $this->deleteOne($category->image);
             }
             $image = $this->uploadOne($params['image'], 'categories');
+        } else {
+            $image = $category->image;
         }
 
         $featured = $collection->has('featured') ? 1 : 0;
@@ -109,6 +95,22 @@ class CategoryRepository extends BaseRepository implements CategoryContract
         $category->update($merge->all());
 
         return $category;
+    }
+
+    /**
+     * Finding the model by id using findOneOrFail() method from BaseRepo.
+     * If no model returned from the query, we throw ModelNotFoundException.
+     * @param int $id
+     * @return mixed
+     * @throws ModelNotFoundException
+     */
+    public function findCategoryById(int $id)
+    {
+        try {
+            return $this->findOneOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            throw new ModelNotFoundException($e);
+        }
     }
 
     /**
