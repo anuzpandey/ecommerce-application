@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
              AdminsTableSeeder::class,
              SettingsTableSeeder::class,
              CategoriesTableSeeder::class,
+             AttributesTableSeeder::class,
+             AttributeValuesTableSeeder::class,
          ]);
     }
 }
