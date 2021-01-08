@@ -17,10 +17,10 @@ class CreateAttributeValuesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('attribute_id');
             $table->text('value');
-            $table->decimal('price', 2)->nullable();
+            $table->decimal('price', 6, 2)->nullable();
             $table->timestamps();
 
-            $table->foreign('attribute_id')->references('id')->on('attributes');
+            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
         });
     }
 

@@ -2,19 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Contracts\AttributeContract;
 use App\Http\Controllers\BaseController;
 use App\Repositories\AttributeRepository;
 use Illuminate\Http\Request;
 
+/**
+ * Class AttributeController
+ * @package App\Http\Controllers\Admin
+ */
 class AttributeController extends BaseController
 {
+    /**
+     * @var AttributeRepository
+     */
     protected $attributeRepository;
 
     /**
      * AttributeController constructor.
      * @param $attributeRepository
      */
-    public function __construct(AttributeRepository $attributeRepository)
+    public function __construct(AttributeContract $attributeRepository)
     {
         $this->attributeRepository = $attributeRepository;
     }
