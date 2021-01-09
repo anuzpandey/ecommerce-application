@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class AttributeValue extends Model
 {
@@ -32,5 +33,13 @@ class AttributeValue extends Model
     public function attribute()
     {
         return $this->belongsTo(Attribute::class);
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function productAttributes()
+    {
+        return $this->belongsToMany(ProductAttribute::class);
     }
 }

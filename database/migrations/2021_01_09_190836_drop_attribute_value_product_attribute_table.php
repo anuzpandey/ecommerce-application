@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBrandsTable extends Migration
+class DropAttributeValueProductAttributeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,7 @@ class CreateBrandsTable extends Migration
      */
     public function up()
     {
-        Schema::create('brands', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 45);
-            $table->string('slug');
-            $table->string('logo')->nullable();
-            $table->timestamps();
-        });
+        Schema::dropIfExists('attribute_value_product_attribute');
     }
 
     /**
@@ -29,6 +23,6 @@ class CreateBrandsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brands');
+        //
     }
 }
