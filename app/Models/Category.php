@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
+use TypiCMS\NestableTrait;
 
 class Category extends Model
 {
+    use NestableTrait;
+
     protected $table = 'categories';
 
     protected $fillable = [
