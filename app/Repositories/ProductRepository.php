@@ -13,7 +13,6 @@ class ProductRepository extends BaseRepository implements ProductContract
 {
     use UploadAble;
 
-
     /**
      * ProductRepository constructor.
      * @param Product $model
@@ -87,5 +86,14 @@ class ProductRepository extends BaseRepository implements ProductContract
         $product->delete();
 
         return $product;
+    }
+
+    /**
+     * @param $slug
+     * @return mixed
+     */
+    public function findProductBySlug($slug)
+    {
+        return Product::where('slug', $slug)->first();
     }
 }

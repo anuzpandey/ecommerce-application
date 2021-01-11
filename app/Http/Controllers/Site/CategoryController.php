@@ -23,7 +23,6 @@ class CategoryController extends Controller
     {
         $category = $this->categoryRepository->findBySlug($slug);
 
-        dd($category);
         return view('sites.pages.category', compact('category'));
     }
 
