@@ -59,6 +59,7 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         <tr v-for="value in values">
                             <td style="width: 25%" class="text-center">{{ value.id }}</td>
                             <td style="width: 25%" class="text-center">{{ value.value }}</td>
@@ -67,7 +68,7 @@
                                 <button class="btn btn-sm btn-primary" @click.stop="editAttributeValue(value)">
                                     <i class="fa fa-edit"></i>
                                 </button>
-                                <button class="btn btn-sm btn-danger">
+                                <button class="btn btn-sm btn-danger" @click.stop="deleteAttributeValue(value)">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </td>
@@ -199,6 +200,7 @@ export default {
                         if (response.data.status === 'success') {
                             _this.values.splice(_this.key, 1);
                             _this.resetValue();
+                            // _this.loadValues();
                             _this.$swal("Success! Option value has been deleted!", {
                                 icon: "success",
                             });

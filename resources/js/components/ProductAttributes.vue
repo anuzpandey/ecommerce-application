@@ -190,7 +190,6 @@ export default {
                             _this.$swal("Success! Product attribute has been deleted!", {
                                 icon: "success",
                             });
-                            this.loadProductAttributes(this.productid);
                         } else {
                             _this.$swal("Your Product attribute not deleted!");
                         }
@@ -201,6 +200,7 @@ export default {
                     this.$swal("Action cancelled!");
                 }
             });
+            this.loadProductAttributes(this.productid);
         }
     }
 }
