@@ -36,7 +36,11 @@ trait UploadAble {
      */
     public function deleteOne($path = null, $disk = 'public')
     {
-        Storage::disk($disk)->delete($path);
+        if (Storage($disk)->exists($path)) {
+            Storage::disk($disk)->delete($path);
+            # code...
+        }
+
     }
 
 }
